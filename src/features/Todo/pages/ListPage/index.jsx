@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import TodoList from '../../components/TodoList';
 import queryString from 'query-string';
 import TodoForm from '../../components/TodoForm';
