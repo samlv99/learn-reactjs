@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,6 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CodeIcon from '@material-ui/icons/Code';
 import { NavLink, Link } from 'react-router-dom';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Register from '../../features/Auth/components/register';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +30,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const classes = useStyles();
 
   return (
@@ -44,9 +59,26 @@ export default function Header() {
             </NavLink>
             
       
-            <Button color="inherit">Register</Button>
+            <Button color="inherit" onClick={handleClickOpen}>Register</Button>
         </Toolbar>
       </AppBar>
+
+      <Dialog
+        disableBackdropClick
+        disableEscapeKeyDown
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+      >
+        <DialogContent>
+          <Register />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
