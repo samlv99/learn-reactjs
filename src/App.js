@@ -2,6 +2,7 @@
 // import './App.css';
 import TodoFeature from "./features/Todo";
 import AlbumFeature from "./features/Album";
+import ProductFeature from "./features/Product";
 import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
 import productApi from "./api/productApi";
@@ -33,8 +34,9 @@ function App() {
         <Route path="/" component={counterFearter} exact /> 
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
+        <Route path="/products" component={ProductFeature} />
 
-        {/* <Route component={NotFound} /> */}
+        <Route component={NotFound} />
       </Switch>
      
     </div>
