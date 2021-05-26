@@ -81,7 +81,7 @@ export default function Header() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} xs={12} sm={6} md={4} lg={3}>
       <AppBar position="static">
         <Toolbar>
             <CodeIcon className={classes.menuButton}/>
