@@ -18,7 +18,6 @@ import { AccountCircle, Close } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'features/Auth/userSlice';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -45,11 +44,11 @@ const useStyles = makeStyles((theme) => ({
 const MODE = {
   LOGIN: 'login',
   REGISTER: 'register',
-}
+};
 
 export default function Header() {
   const dispatch = useDispatch();
-  const loggedInUser = useSelector(state => state.user.current);
+  const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
@@ -76,45 +75,46 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  
-
   const classes = useStyles();
 
   return (
     <div className={classes.root} xs={12} sm={6} md={4} lg={3}>
       <AppBar position="static">
         <Toolbar>
-            <CodeIcon className={classes.menuButton}/>
-            <Typography variant="h6" className={classes.title}>
-                <Link className={classes.link} to="/">EZ SHOP</Link> 
-            </Typography>
+          <CodeIcon className={classes.menuButton} />
+          <Typography variant="h6" className={classes.title}>
+            <Link className={classes.link} to="/">
+              EZ SHOP
+            </Link>
+          </Typography>
 
-            <NavLink className={classes.link} to="/" activeClassName="active-menu">
-              <Button color="inherit">Home</Button>
-            </NavLink>
+          <NavLink className={classes.link} to="/" activeClassName="active-menu">
+            <Button color="inherit">Home</Button>
+          </NavLink>
 
-            <NavLink className={classes.link} to="/products" activeClassName="active-menu">
-              <Button color="inherit">Product</Button>
-            </NavLink>
+          <NavLink className={classes.link} to="/products" activeClassName="active-menu">
+            <Button color="inherit">Product</Button>
+          </NavLink>
+          
+          <NavLink className={classes.link} to="/todos" activeClassName="active-menu">
+            <Button color="inherit">Todos</Button>
+          </NavLink>
 
-            <NavLink className={classes.link} to="/todos" activeClassName="active-menu">
-              <Button color="inherit">Todos</Button>
-            </NavLink>
-     
-            <NavLink className={classes.link} to="/albums" activeClassName="active"> 
-              <Button color="inherit">Albums</Button> 
-            </NavLink>
-            
-            {!isLoggedIn && (
-              <Button color="inherit" onClick={handleClickOpen}>Login</Button>
-            )}
+          <NavLink className={classes.link} to="/albums" activeClassName="active">
+            <Button color="inherit">Albums</Button>
+          </NavLink>
 
-            {isLoggedIn && (
-              <IconButton color="inherit" onClick={handelUserClick}>
-                <AccountCircle />
-              </IconButton>
-            )}
-            
+          {!isLoggedIn && (
+            <Button color="inherit" onClick={handleClickOpen}>
+              Login
+            </Button>
+          )}
+
+          {isLoggedIn && (
+            <IconButton color="inherit" onClick={handelUserClick}>
+              <AccountCircle />
+            </IconButton>
+          )}
         </Toolbar>
       </AppBar>
 
@@ -137,7 +137,7 @@ export default function Header() {
         <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
         <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
       </Menu>
-     
+
       <Dialog
         open={open}
         onClose={handleClose}
